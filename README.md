@@ -138,5 +138,44 @@ SpotIm.instance.loginSSO(SECRET) {
             }
 ```
 
+### Dark Theme
+
+Our SDK is allowed to handle Dark Theme in two ways:
+- manual changing Dark mode
+- system changing Dark Theme (from Android API 29 and higher)
+
+The scheme of how dark and light modes are applied to screens:
+<img src="apply_dark_mode_scheme.png"/>
+
+To specify theme settings use `SpotImThemeParams` class as the second parameter in method `getPreConversationFragment(ARTICLE_ID, SpotImThemeParams)`:
+
+```kotlin
+SpotIm.instance.getPreConversationFragment(
+                    ARTICLE_ID,
+                    SpotImThemeParams(
+                        isSupportSystemDarkMode = isSupportSystemNightMode,
+                        themeMode = if (isDarkMode) SpotImThemeMode.DARK else SpotImThemeMode.LIGHT,
+                        darkColor = Color.parseColor(YOUR_DARK_THEME_BACKGROUND_COLOR)
+                    )
+                )
+```
+You can specify at the constructor `SpotImThemeParams`  the next parameters:
+ - does the app support system Dark Theme (from Android API 29 and higher). Use parameter `isSupportSystemDarkMode`
+ - setup current app `SpotImThemeMode.LIGHT` or `SpotImThemeMode.DARK` mode. Use parameter `themeMode`.
+ - the main background color which your app uses for Dark Theme. Use parameter `darkColor`.
+
+If you don't want to modify a theme of the SDK screens you can set `SpotImThemeParams.DEFAULT_THEME_PARAMS` or just omit this parameter.
+
+```kotlin
+SpotIm.instance.getPreConversationFragment(
+                    ARTICLE_ID,
+                    SpotImThemeParams.DEFAULT_THEME_PARAMS
+                )
+```
+
+The next parameters will be applied in this case:
+- `isSupportSystemDarkMode = false`
+- `themeMode = SpotImThemeMode.LIGHT`
+- `darkColor  = "#181818"` (doesn't matter)
 
 
