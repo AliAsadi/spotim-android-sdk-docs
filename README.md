@@ -26,7 +26,7 @@ Add dependency to your module's `build.gradle` file:
 
 ```Groovy
 dependencies {
-	implementation 'com.github.SpotIM:spotim-android-sdk:0.1.4'
+	implementation 'com.github.SpotIM:spotim-android-sdk:0.1.5'
 }
 ```
 
