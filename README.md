@@ -20,6 +20,14 @@ allprojects {
 }
 ```
 
+
+Add auth token for SpotIm sdk into the ```gradle.properties``` file:
+
+```gradle
+    authToken=YOUR_AUTH_TOKEN
+```
+
+
 ##### Dependency
 
 Add dependency to your module's `build.gradle` file:
