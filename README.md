@@ -7,12 +7,15 @@ This library provides an easy integration with Spot.IM into a native Android app
 # Requirements
 - Android SDK verison (API 18) and above.
 - Your application will need a permission to use the Internet. Add the following line to your **AndroidManifest.xml**:
+
 ```xml
 <uses-permission android:name="android.permission.INTERNET" />
 ```
 
 # Installation
+
 1. Add the following lines to your **project** module's `build.gradle` file.
+
 ```gradle
 rpositories {
     maven {
@@ -23,6 +26,7 @@ rpositories {
     }
 }
 ```
+
 2. Add the following lines to the **app** module's `build.gradle` file.
 ```gradle
 implementation 'com.github.SpotIM:spotim-android-sdk:0.1.5'
