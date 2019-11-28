@@ -7,15 +7,12 @@ This library provides an easy integration with Spot.IM into a native Android app
 # Requirements
 - Android SDK verison (API 18) and above.
 - Your application will need a permission to use the Internet. Add the following line to your **AndroidManifest.xml**:
-
 ```xml
 <uses-permission android:name="android.permission.INTERNET" />
 ```
 
 # Installation
-
 1. Add the following lines to your **project** module's `build.gradle` file.
-
 ```gradle
 rpositories {
     maven {
@@ -26,7 +23,6 @@ rpositories {
     }
 }
 ```
-
 2. Add the following lines to the **app** module's `build.gradle` file.
 ```gradle
 implementation 'com.github.SpotIM:spotim-android-sdk:0.1.5'
@@ -116,9 +112,16 @@ SpotIm.completeSSO("CODE_B", new SpotCallback<CompleteSSOResponse>() {
 });
 ```
 
+#### There is 2 available flows for the sso authentication.
+ 1. With token -> You just need to call the startSSO() method with your uniqe **TOKEN**
+ 2. Without Token -> You need to go throght all the sso process stages.
+ <p>
+  <img src="https://user-images.githubusercontent.com/20803775/69812912-cb168100-11f9-11ea-8e4f-12e428d20a65.png" width="600">
+</p>
+
+
 For more information about sso authentication take a look at: [SSO (Single Sign On) with Spot.IM
 ](https://github.com/SpotIM/spotim-integration-docs/blob/master/api/single-sign-on/README.md)
- 
 
 # Feedback
 Feel free to contact us via love@spot.im
