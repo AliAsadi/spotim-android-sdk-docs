@@ -90,7 +90,7 @@ If you don't want to modify a theme of the SDK screens you can set `SpotImThemeP
 - Using startSSO():
 
 ```java
-SpotIm.startSSO("", new SpotCallback<StartSSOResponse>() { 
+SpotIm.startSSO(new SpotCallback<StartSSOResponse>() { 
 	@Override 
 	public void onResponse(StartSSOResponse response) { 
 	String codeA = response.getCodeA(); 
@@ -112,18 +112,10 @@ SpotIm.completeSSO("CODE_B", new SpotCallback<CompleteSSOResponse>() {
 });
 ```
 
-#### There is 2 available flows for the sso authentication.
- 1. With token -> You just need to call the startSSO() method with your uniqe **TOKEN**
- 2. Without Token -> You need to go throght all the sso process stages.
- <p>
-  <img src="https://user-images.githubusercontent.com/20803775/69812912-cb168100-11f9-11ea-8e4f-12e428d20a65.png" width="600">
-</p>
-
-
 For more information about sso authentication take a look at: [SSO (Single Sign On) with Spot.IM
 ](https://github.com/SpotIM/spotim-integration-docs/blob/master/api/single-sign-on/README.md)
 
 # Feedback
-Feel free to contact us via love@spot.im
+Feel free to contact us via mobile@spot.im
 
 **Happy Coding!** ![](https://i.imgur.com/rneCZCN.png)
