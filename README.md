@@ -14,7 +14,7 @@ This library provides an easy integration with Spot.IM into a native Android app
 # Installation
 1. Add the following lines to your **project** module's `build.gradle` file.
 ```gradle
-rpositories {
+repositories {
     maven {
         url 'https://jitpack.io'
 	credentials {
