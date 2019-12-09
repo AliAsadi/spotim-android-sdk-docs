@@ -25,7 +25,7 @@ repositories {
 ```
 2. Add the following lines to the **app** module's `build.gradle` file.
 ```gradle
-implementation 'com.github.SpotIM:spotim-android-sdk:0.1.5'
+implementation 'com.github.SpotIM.spotim-android-sdk:spotim-sdk:0.1.8'
 ```
 ⚠️ **Note:** To get access to the repository you need to set your unique AuthToken. if you don't know your AuthToken please contact the support.
 
