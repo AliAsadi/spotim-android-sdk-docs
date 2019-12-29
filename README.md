@@ -15,19 +15,13 @@ This library provides an easy integration with Spot.IM into a native Android app
 1. Add the following lines to your **project** module's `build.gradle` file.
 ```gradle
 repositories {
-    maven {
-        url 'https://jitpack.io'
-	credentials {
-            username = 'AUTH_TOKEN'
-        }
-    }
+   maven { url 'https://jitpack.io' }
 }
 ```
 2. Add the following lines to the **app** module's `build.gradle` file.
 ```gradle
 implementation 'com.github.SpotIM.spotim-android-sdk:spotim-sdk:0.1.8'
 ```
-⚠️ **Note:** To get access to the repository you need to set your unique AuthToken. if you don't know your AuthToken please contact the support.
 
 # Initialize The SDK
 
