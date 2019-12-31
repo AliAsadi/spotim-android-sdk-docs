@@ -54,14 +54,22 @@ Our SDK inlcudes 4 main methods.
 In order to get Pre-Conversaction Fragment you need to provide **ConversationID**.
 
 ```java
-Fragment fragment = SpotIm.getPreConversationFragment("CONVERSATION_ID");
+SpotIm.getPreConversationFragment(CONVERSATION_ID,new SpotCallback<Fragment>() { 
+	@Override 
+	public void onSuccess(Fragment fragment) { 
+	//doSomething...
+	} 
+	
+	@Override 
+	public void onFailure(SpotException exception) { //doSomething... } 
+});
 ```
 
 ⚠️ **Note:** Make sure to use the same **ConversationID** you use on your web application so that the SDK would be able to display the same comments from the web application.
 
 #### Theme settings
 
-To specify theme settings use `SpotImThemeParams` class as the second parameter in method `getPreConversationFragment(CONVERSATION_ID, themeParams)`:
+To specify theme settings use `SpotImThemeParams` class as the second parameter in method 
 
 ```java
 SpotImThemeMode themeMode = SpotImThemeMode.DARK;
@@ -70,6 +78,18 @@ SpotImThemeParams themeParams = new SpotImThemeParams(false, themeMode, backgrou
 ```
 
 If you don't want to modify a theme of the SDK screens you can set `SpotImThemeParams.DEFAULT_THEME_PARAMS` or just omit this parameter.
+
+```java
+SpotIm.getPreConversationFragment(CONVERSATION_ID,themeParams,new SpotCallback<Fragment>() { 
+	@Override 
+	public void onSuccess(Fragment fragment) { 
+	//doSomething...
+	} 
+	
+	@Override 
+	public void onFailure(SpotException exception) { //doSomething... } 
+});
+```
 
 ### 2. Authentication with SSO:
 
