@@ -86,7 +86,7 @@ If you don't want to modify a theme of the SDK screens you can set `SpotImThemeP
 ```java
 SpotIm.startSSO(new SpotCallback<StartSSOResponse>() { 
 	@Override 
-	public void onResponse(StartSSOResponse response) { 
+	public void onSuccess(StartSSOResponse response) { 
 	String codeA = response.getCodeA(); 
 	} 
 	
@@ -96,10 +96,11 @@ SpotIm.startSSO(new SpotCallback<StartSSOResponse>() {
 ```
 
 - Using completeSSO():
+
 ```java
 SpotIm.completeSSO("CODE_B", new SpotCallback<CompleteSSOResponse>() { 
 	@Override 
-	public void onResponse(CompleteSSOResponse response) { //doSomething...	} 
+	public void onSuccess(CompleteSSOResponse response) { //doSomething...	} 
 	
 	@Override 
 	public void onFailure(SpotException exception) { //doSomething... } 
@@ -108,6 +109,18 @@ SpotIm.completeSSO("CODE_B", new SpotCallback<CompleteSSOResponse>() {
 
 For more information about sso authentication take a look at: [SSO (Single Sign On) with Spot.IM
 ](https://github.com/SpotIM/spotim-integration-docs/blob/master/api/single-sign-on/README.md)
+
+### 3. Logout:
+
+```java
+SpotIm.logout(new SpotCallback<Void>() { 
+	@Override 
+	public void onSuccess(Void response) { //doSomething...	} 
+	
+	@Override 
+	public void onFailure(SpotException exception) { //doSomething... } 
+});
+```
 
 # Feedback
 Feel free to contact us via mobile@spot.im
