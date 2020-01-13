@@ -10,6 +10,14 @@ This library provides an easy integration with Spot.IM into a native Android app
 ```xml
 <uses-permission android:name="android.permission.INTERNET" />
 ```
+- Enable multidex for your app, add the following lines to the **app** module's `build.gradle` file.
+```gradle
+android {
+    defaultConfig {
+        multiDexEnabled true
+    }
+}    
+```
 
 # Installation
 1. Add the following lines to your **project** module's `build.gradle` file.
