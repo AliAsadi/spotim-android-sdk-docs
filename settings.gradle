@@ -1,0 +1,2 @@
+include ':sample-app'
+rootProject.name='spotim-android-sdk-docs'
