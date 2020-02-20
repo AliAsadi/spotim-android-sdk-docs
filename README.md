@@ -10,14 +10,6 @@ This library provides an easy integration with Spot.IM into a native Android app
 ```xml
 <uses-permission android:name="android.permission.INTERNET" />
 ```
-- Enable multidex for your app, add the following lines to the **app** module's `build.gradle` file.
-```gradle
-android {
-    defaultConfig {
-        multiDexEnabled true
-    }
-}    
-```
 
 # Installation
 1. Add the following lines to your **project** module's `build.gradle` file.
@@ -28,7 +20,7 @@ repositories {
 ```
 2. Add the following lines to the **app** module's `build.gradle` file.
 ```gradle
-implementation 'com.github.SpotIM.spotim-android-sdk:spotim-sdk:0.1.9'
+implementation 'com.github.SpotIM.spotim-android-sdk:spotim-sdk:1.0.0'
 ```
 
 # Initialize The SDK
@@ -52,7 +44,7 @@ When clicking on the text box to create a new comments we bring the user to the 
 
 # Usage
 
-Our SDK inlcudes 4 main methods.
+Our SDK inlcudes 5 main methods.
 <p>
   <img src="https://user-images.githubusercontent.com/20803775/69654940-4bb07280-107e-11ea-8c1c-9985c155a33e.png" width="600">
 </p>
@@ -75,9 +67,34 @@ SpotIm.getPreConversationFragment(CONVERSATION_ID,new SpotCallback<Fragment>() {
 
 ⚠️ **Note:** Make sure to use the same **ConversationID** you use on your web application so that the SDK would be able to display the same comments from the web application.
 
-#### Theme settings
+#### Conversation options
 
-To specify theme settings use `SpotImThemeParams` class as the second parameter in method 
+In order to configure conversation parameters such as Theme, amount of comments that will be show in Pre-Conversation Fragment, you need to provide ConversationOptions.Builder() as the second parameter in method. 
+
+```java
+ConversationOptions options = ConversationOptions.Builder()
+                                .addTheme(new SpotImThemeParams(false, themeMode, backgroundColor))
+                                .addMaxCountOfPreConversationComments(4)
+                                .build()
+```
+If you don't want to configure conversation options, you can omit this parameter.
+
+```java
+SpotIm.getPreConversationFragment(CONVERSATION_ID, options ,new SpotCallback<Fragment>() { 
+	@Override 
+	public void onSuccess(Fragment fragment) { 
+	//doSomething...
+	} 
+	
+	@Override 
+	public void onFailure(SpotException exception) { //doSomething... } 
+});
+```
+
+
+##### Theme settings
+
+To specify theme settings use `.addTheme()` method in `ConversationOptions.Builder()` to setup `SpotImThemeParams` class as parameter
 
 ```java
 SpotImThemeMode themeMode = SpotImThemeMode.DARK;
@@ -88,15 +105,42 @@ SpotImThemeParams themeParams = new SpotImThemeParams(false, themeMode, backgrou
 If you don't want to modify a theme of the SDK screens you can set `SpotImThemeParams.DEFAULT_THEME_PARAMS` or just omit this parameter.
 
 ```java
-SpotIm.getPreConversationFragment(CONVERSATION_ID,themeParams,new SpotCallback<Fragment>() { 
-	@Override 
-	public void onSuccess(Fragment fragment) { 
-	//doSomething...
-	} 
-	
-	@Override 
-	public void onFailure(SpotException exception) { //doSomething... } 
-});
+ConversationOptions options = ConversationOptions.Builder()
+                .addTheme(themeParams)
+                .build()
+```
+
+##### Amount of comments that will be show in Pre-Conversation Fragment
+
+Tho specify amount of comments that will be show in Pre-Conversation Fragment use `addMaxCountOfPreConversationComments(COUNTER)` method `ConversationOptions.Builder()`
+
+```java
+ConversationOptions options = ConversationOptions.Builder()
+                .addMaxCountOfPreConversationComments(2)
+                .build()
+```
+
+⚠️ **Note:** **COUNTER** should be a value from 0 to 16. When the **COUNTER** less than 0 - the SDK will show 2 comments. When the **COUNTER** more than 16 - the SDK will show 16 comments.
+
+##### Sorting Type
+
+To specify sorting type for the Pre-Conversation Fragment user `addSortType()` method in `ConversationOptions.Builder()` to setup `SortType` as parameter
+
+```java
+ ConversationOptions options = new ConversationOptions.Builder()
+                .addSortType(SortType.Companion.getSORT_NEWEST())
+                .build();
+```
+
+##### Article
+
+To specify article for current Conversation use `configureArticle()` method in `ConversationOptions.Builder()` to setup `Article` class as parameter.
+
+```java
+new ConversationOptions.Builder()
+                .configureArticle(new Article(
+                "URL", "THUMBNAIL_URL", "TITLE", "SUBTITLE"))
+                .build();
 ```
 
 ### 2. Authentication with SSO:
@@ -138,7 +182,21 @@ SpotIm.completeSSO("CODE_B", new SpotCallback<CompleteSSOResponse>() {
 For more information about sso authentication take a look at: [SSO (Single Sign On) with Spot.IM
 ](https://github.com/SpotIM/spotim-integration-docs/blob/master/api/single-sign-on/README.md)
 
-### 3. Logout:
+### 3. Supporting Signup/Login flow:
+There are several UI/UX flow in SDK that require the hosting app to signup or login, for example before user can post a new comment as a registered user. Each application has its own signup/login flow and knows how to initiate such flow.
+By providing LoginDelegate the SDK can request the hosting app to start a signup/login flow for example by starting the hosting app signup/login Activity.
+
+```java
+SpotIm.setLoginDelegate(new LoginDelegate() {
+       @Override
+       public void startLoginFlow(Context activityContext) {
+            //Implement your app logic for starting the login flow.
+       }
+});
+```
+
+
+### 4. Logout:
 
 ```java
 SpotIm.logout(new SpotCallback<Void>() { 
@@ -147,6 +205,20 @@ SpotIm.logout(new SpotCallback<Void>() {
 	
 	@Override 
 	public void onFailure(SpotException exception) { //doSomething... } 
+});
+```
+
+### 5. User status
+
+Use `getUserStatus()` to know if the current user is a guest or a registered user.
+
+```java
+SpotIm.getUserStatus(new SpotCallback<UserStatus>() {
+        @Override 
+	public void onSuccess(UserStatus status) { //doSomething... } 
+	
+	@Override 
+	public void onFailure(SpotException exception) { //doSomething... }
 });
 ```
 
