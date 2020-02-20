@@ -37,6 +37,6 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
     //TODO - Implement SpotIM SDK (Make sure to use the latest version)
-    implementation 'com.github.SpotIM.spotim-android-sdk:spotim-sdk:0.1.9'
+    implementation 'com.github.SpotIM.spotim-android-sdk:spotim-sdk:1.0.0'
 
 }
