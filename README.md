@@ -42,6 +42,24 @@ When the user wants to see more comments we open Activity which display all comm
 
 When clicking on the text box to create a new comments we bring the user to the creation screen. The users needs to be logged in inorder to post new comments, this is where the hosting app needs to integrate it's authentication system.
 
+
+# Structure
+    +---------------------------------------------------------------+
+    |                                                               |
+    |                 SpotIM-android-sdk : 37.3 kb                  |
+    |                                                               |
+    +---------------------------------------------------------------+
+    +------------------------------+ +------------------------------+
+    |                              | |                              | 
+    |           SpotIM             | |           SpotIM             | 
+    |           -Core:             | |           -Common:           | 
+    |                              | |                              |
+    |           1.4 mb             | |           25.5 kb            | 
+    |                              | |                              | 
+    +------------------------------+ +------------------------------+
+   
+Example: Including the SpotIM-SDK module (which depends on SpotIM-Common and SpotIM-Core) would increase your app's size by an estimated **1.46 mb** (without the dependencies)
+
 # Usage
 
 Our SDK inlcudes 5 main methods.
