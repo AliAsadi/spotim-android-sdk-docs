@@ -42,7 +42,7 @@ When the user wants to see more comments we open Activity which display all comm
 
 When clicking on the text box to create a new comments we bring the user to the creation screen. The users needs to be logged in inorder to post new comments, this is where the hosting app needs to integrate it's authentication system.
 
-### Ads Placements
+# Ads Placements
 
 Interstitial Display ad or video will be shown when navigating to the conversation page only once per article. In the article page the banner below the conversation.
 
