@@ -34,13 +34,24 @@ SpotIm.init(context,"SPOT_ID");
 
 # Introduction
 
-Our SDK exposes one major flow to set up. The pre-conversation view is a view that displays a preview of 2 comments from the conversation, a text box to create new comments and a button to see all comments.
+Our SDK exposes one major flow to set up. The pre-conversation view is a view that displays a preview of 2-16 comments from the conversation, a text box to create new comments and a button to see all comments.
 
 The Pre-conversation view should be displayed in your article Activity/Fragment below the article.
 
 When the user wants to see more comments we open Activity which display all comments from the conversation.
 
 When clicking on the text box to create a new comments we bring the user to the creation screen. The users needs to be logged in inorder to post new comments, this is where the hosting app needs to integrate it's authentication system.
+
+### Ads Placements
+
+Interstitial Display ad or video will be shown when navigating to the conversation page only once per article. In the article page the banner below the conversation.
+
+Article page | Conversation page | Interstitial
+--- | --- | --- |
+<img src="https://i.ibb.co/NSpfzRT/image.png" width=300> | <img src="https://i.ibb.co/KWN1b7w/Conversation-Page.png" width=300> | <img src="https://i.ibb.co/wJn75Tx/Interstitial.png" width=300>  
+
+
+Note about ads: Ads are currently being A/B tested. The ads will be shown to certain users according to an A/B test. The next step will be testing more ad formats to optimize both experience and revenue.
 
 
 # Structure
