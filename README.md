@@ -20,7 +20,7 @@ repositories {
 ```
 2. Add the following lines to the **app** module's `build.gradle` file.
 ```gradle
-implementation 'com.github.SpotIM.spotim-android-sdk:spotim-sdk:1.0.3'
+implementation 'com.github.SpotIM.spotim-android-sdk:spotim-sdk:1.0.4'
 ```
 
 # Initialize The SDK
