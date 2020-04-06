@@ -208,6 +208,21 @@ SpotIm.completeSSO("CODE_B", new SpotCallback<CompleteSSOResponse>() {
 });
 ```
 
+#### SSO with JWT:
+
+1. Authenticate a user with your backend
+2. Call ssoWithJwt(JWT).
+
+```java
+SpotIm.ssoWithJwt("JWT_SECRET", new SpotCallback<SsoWithJwtResponse>() { 
+	@Override 
+	public void onSuccess(SsoWithJwtResponse response) { //doSomething...	} 
+	
+	@Override 
+	public void onFailure(SpotException exception) { //doSomething... } 
+});
+```
+
 For more information about sso authentication take a look at: [SSO (Single Sign On) with Spot.IM
 ](https://github.com/SpotIM/spotim-integration-docs/blob/master/api/single-sign-on/README.md)
 
