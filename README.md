@@ -20,8 +20,44 @@ repositories {
 ```
 2. Add the following lines to the **app** module's `build.gradle` file.
 ```gradle
-implementation 'com.github.SpotIM.spotim-android-sdk:spotim-sdk:1.1.1'
+implementation 'com.github.SpotIM.spotim-android-sdk:spotim-sdk:1.1.2'
 ```
+3. Apply Spot.IM gradle plugin
+	There are two options to implement the plugin:
+	1. Using the [plugins DSL](#using-the-plugins-dsl)
+	2. Using [legacy plugin application](#using-legacy-plugin-application)
+
+	### Using the plugins DSL
+
+	Add the following lines to the **app** module's `build.gradle` file.
+	```gradle
+	plugins {
+	  id "im.spot" version "1.0"
+	}
+	```
+	⚠️ **Note:** Maku sure to apply the plugin after the `com.android.application` plugin.
+
+	### Using legacy plugin application
+
+	1. Add the following lines to your **project** module's `build.gradle` file.
+	```gradle
+	buildscript {
+	  repositories {
+	    maven {
+	      url "https://plugins.gradle.org/m2/"
+	    }
+	  }
+	  dependencies {
+	    classpath "gradle.plugin.im.spot:spotim-gradle-plugin:1.0"
+	  }
+	}
+	```
+
+	2. Add the following lines to the **app** module's `build.gradle` file.
+
+	```gradle
+	apply plugin: "im.spot"
+	```
 
 # Initialize The SDK
 
